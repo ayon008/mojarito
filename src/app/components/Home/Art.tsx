@@ -33,6 +33,11 @@ const Art = () => {
       duration: 1,
       ease: "power1.inOut",
     });
+    t1.to("#masked-content", {
+      opacity: 1,
+      duration: 1,
+      ease: "power1.inOut",
+    });
   }, []);
   return (
     <section id="art">
