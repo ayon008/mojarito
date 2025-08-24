@@ -1,11 +1,13 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import leftImage from "../../../../public/images/slider-left-leaf.png";
 import rightImage from "../../../../public/images/slider-right-leaf.png";
 import { allCocktails } from "@/app/js/contants";
 import leftArrow from "../../../../public/images/right-arrow.png";
 import rightArrow from "../../../../public/images/left-arrow.png";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 const Menu = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const totalCocktails = allCocktails.length;
@@ -21,6 +23,39 @@ const Menu = () => {
   const currentCocktail = getCocktailAt(0);
   const prevCocktail = getCocktailAt(-1);
   const nextCocktail = getCocktailAt(1);
+  const contentRef = useRef<HTMLDivElement | null>(null);
+
+  useGSAP(() => {
+    gsap.fromTo("#title", { opacity: 0 }, { opacity: 1, duration: 1 });
+    gsap.fromTo(
+      ".cocktail img",
+      { opacity: 0, xPercent: -100 },
+      {
+        xPercent: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power1.inOut",
+      }
+    );
+    gsap.fromTo(
+      ".details h2",
+      { yPercent: 100, opacity: 0 },
+      {
+        yPercent: 0,
+        opacity: 100,
+        ease: "power1.inOut",
+      }
+    );
+    gsap.fromTo(
+      ".details p",
+      { yPercent: 100, opacity: 0 },
+      {
+        yPercent: 0,
+        opacity: 100,
+        ease: "power1.inOut",
+      }
+    );
+  }, [currentIndex]);
 
   return (
     <section id="menu" aria-label="menu-heading">
@@ -70,6 +105,16 @@ const Menu = () => {
             height={300}
             className="object-contain"
           />
+        </div>
+        <div className="recipe">
+          <div ref={contentRef} className="info">
+            <p>Recipe for:</p>
+            <p id="title">{currentCocktail.name}</p>
+          </div>
+          <div className="details">
+            <h2>{currentCocktail.title}</h2>
+            <p>{currentCocktail.description}</p>
+          </div>
         </div>
       </div>
     </section>

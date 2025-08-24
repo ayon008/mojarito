@@ -4,6 +4,7 @@ import Cocktail from "./components/Home/Cocktail";
 import About from "./components/Home/About";
 import Art from "./components/Home/Art";
 import Menu from "./components/Home/Menu";
+import Contact from "./components/Home/Contact";
 
 const page = () => {
   return (
@@ -13,6 +14,7 @@ const page = () => {
       <About />
       <Art />
       <Menu />
+      <Contact />
     </div>
   );
 };
