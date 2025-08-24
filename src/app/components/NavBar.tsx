@@ -22,6 +22,7 @@ const NavBar = () => {
         trigger: "nav",
         start: "bottom top",
         end: "top top",
+        scrub: true,
       },
     });
     navTween.fromTo(
@@ -34,7 +35,6 @@ const NavBar = () => {
         ease: "power1.inOut",
       }
     );
-    
   });
   return (
     <nav className="">
