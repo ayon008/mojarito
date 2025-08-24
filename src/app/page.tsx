@@ -6,7 +6,7 @@ const page = () => {
   return (
     <div>
       <Hero />
-      <div className="h-dvh bg-black"></div>
+      
     </div>
   );
 };
