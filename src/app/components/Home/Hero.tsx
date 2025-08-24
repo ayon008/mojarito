@@ -18,7 +18,7 @@ const Hero = () => {
     const heroSplit = new SplitText(".title", { type: "chars , words" });
     const paragraphSplit = new SplitText(".subtitle", { type: "lines" });
     heroSplit.chars.forEach((char) => char.classList.add("text-gradient"));
-    gsap.from(".text-gradient", {
+    gsap.from(heroSplit.chars, {
       yPercent: 100,
       duration: 1,
       ease: "expo.out",
