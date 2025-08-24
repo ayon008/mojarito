@@ -1,8 +1,8 @@
 import React from "react";
-// import Banner from "./components/Home/Banner";
 import Hero from "./components/Home/Hero";
 import Cocktail from "./components/Home/Cocktail";
 import About from "./components/Home/About";
+import Art from "./components/Home/Art";
 
 const page = () => {
   return (
@@ -10,6 +10,7 @@ const page = () => {
       <Hero />
       <Cocktail />
       <About />
+      <Art />
     </div>
   );
 };
